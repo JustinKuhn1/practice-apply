@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Task List</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 400px; margin: 40px auto; }
+    li { padding: 6px; display: flex; justify-content: space-between; align-items: center; }
+    .delete-btn { cursor: pointer; color: #999; margin-left: 10px; }
+  </style>
+</head>
+<body>
+
+  <h1>My Tasks</h1>
+
+  <!-- Wrapping input + button in a <form> means pressing Enter
+       submits the form, not just clicking the button. Without
+       preventDefault() in script.js, that submit would reload the page. -->
+  <form id="taskForm">
+    <input type="text" id="taskInput" placeholder="Enter a task">
+    <button type="submit" id="taskButton">Add Task</button>
+  </form>
+
+  <p id="taskCounter">Tasks: 0</p>
+  <ul id="taskList"></ul>
+
+  <script src="script.js"></script>
+</body>
+</html>
