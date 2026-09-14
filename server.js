@@ -6,8 +6,16 @@ const { createClient } = require("@supabase/supabase-js");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const path = require("path");
+
 app.use(express.json());
-app.use(express.static("public"));
+app.use(express.static("public")); // still useful for local dev
+
+// Vercel ignores express.static(), so we need an explicit route for "/"
+// to serve index.html when deployed there.
+app.get("/", function (req, res) {
+  res.sendFile(path.join(process.cwd(), "public", "index.html"));
+});
 
 // ---- Connect to Supabase ----
 // These values come from .env (never hardcode real keys directly in code
